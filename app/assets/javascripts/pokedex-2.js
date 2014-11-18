@@ -5,6 +5,7 @@ Pokedex.RootView.prototype.addToyToList = function (toy) {
 };
 
 Pokedex.RootView.prototype.renderToyDetail = function (toy) { // III
+  this.$toyDetail.empty();
   var $detail = $("<div>").addClass("detail");
   var att = toy.attributes;
   this.$toyDetail.append($detail)
