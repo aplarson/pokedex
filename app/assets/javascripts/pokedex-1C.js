@@ -5,6 +5,7 @@ Pokedex.RootView.prototype.createPokemon = function (attrs, callback) {
       this.pokes.push(newPokemon);
       this.addPokemonToList(newPokemon);
       callback(newPokemon);
+      _clear(this.$newPoke);
     }).bind(this)
   });
   
@@ -16,6 +17,8 @@ Pokedex.RootView.prototype.submitPokemonForm = function (event) {
   this.createPokemon(pokemonData, this.renderPokemonDetail.bind(this));
 };
 
-// var _clear = function(form){
-//   form.find("input[]")
-// }
+var _clear = function(form){
+  var $input = form.find("input");
+  debugger
+  $input.val(" ");
+}

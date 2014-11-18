@@ -1,8 +1,12 @@
 Pokedex.RootView.prototype.renderPokemonDetail = function (pokemon) {
   var $detailDiv = $('div.pokemon-detail');
+  var $toys = $("<ul>").addClass("toys");
+  
+  var view = this;
   pokemon.fetch({
-    success: (function(tPokemon){
+    success: (function (tPokemon) {
       $detailDiv.empty();
+      
       var attributes = tPokemon.attributes;
        for(property in attributes) {
           
@@ -12,15 +16,15 @@ Pokedex.RootView.prototype.renderPokemonDetail = function (pokemon) {
             $('<p>').html(property + ": " + attributes[property]).appendTo($detailDiv);
           }
        }
-       
+
+       $detailDiv.append($toys);
        pokemon.toys().each(function(toy){
-         console.log(toy);
+         view.addToyToList(toy);
        })
     })
   })
-  var $toys = $('<ul class=\"toys\">');
-  $detailDiv.append($toys);
-  this.$pokeDetail.append($detailDiv);
+
+  
 };
 
 Pokedex.RootView.prototype.selectPokemonFromList = function (event) {
